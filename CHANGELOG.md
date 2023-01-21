@@ -1,3 +1,15 @@
+## 1.0.0 2023-01-20 <dave at tiredofit dot ca>
+
+   ### Added
+      - Auto create S3QL filesystem if not exist
+      - FSCK upon container startup
+      - Adjustable compression functionality
+      - Adjustable LOG_TYPE
+      - Ability to pass extra _ARG values to fsck, mkfs, and mount.s3ql processes
+      - Customizable Config Path and Config File Name
+      - Ability to switch on or off Cache including Persistent Cache
+
+
 ## 0.0.1 2023-01-20 <dave at tiredofit dot ca>
 
    ### Added

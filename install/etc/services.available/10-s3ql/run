@@ -1,0 +1,33 @@
+#!/command/with-contenv bash
+
+source /assets/functions/00-container
+PROCESS_NAME="s3ql"
+prepare_service defaults single
+
+check_container_initialized
+check_service_initialized init
+
+if var_true "${ENABLE_CACHE}" ; then
+    s3ql_cachedir_arg="--cachedir ${CACHE_PATH}"
+    if var_true "${ENABLE_PERSISTENT_CACHE}" ; then
+        s3ql_cachedir_arg+=" --keep-cache"
+    fi
+fi
+
+if [ "${LOG_TYPE,,}" = "file" ] ; then
+    log_s3ql="s3ql-$(echo "${S3_HOST}" | cut -d / -f 3.log)"
+else
+    log_s3ql="none"
+fi
+
+liftoff
+
+print_start "Starting S3QL ${S3QL_VERSION} for host: '${S3_HOST}"
+exec /usr/bin/mount.s3ql \
+                            --authfile "${CONFIG_PATH}"/"${CONFIG_FILE}" \
+                            --allow-other \
+                            --compression "${COMPRESSION}" \
+                            --fg \
+                            --log "${log_s3ql}" \
+                            ${s3ql_cachedir_arg} ${S3QL_ARGS} "${S3_HOST}" \
+                            "${DATA_PATH}"

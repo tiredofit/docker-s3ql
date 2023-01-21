@@ -9,7 +9,7 @@
 
 ## About
 
-This will build a Docker Image for [S3QL](http://www.rath.org/s3ql-docs/)), A virtual filesystem that works on S3 Buckets
+This will build a Docker Image for [S3QL](http://www.rath.org/s3ql-docs/)), A deduplicating, compressing virtual filesystem that works on S3 compatible buckets.
 
 ## Maintainer
 
@@ -20,6 +20,7 @@ This will build a Docker Image for [S3QL](http://www.rath.org/s3ql-docs/)), A vi
 - [About](#about)
 - [Maintainer](#maintainer)
 - [Table of Contents](#table-of-contents)
+- [Prerequisites and Assumptions](#prerequisites-and-assumptions)
 - [Installation](#installation)
   - [Build from Source](#build-from-source)
   - [Prebuilt Images](#prebuilt-images)
@@ -29,7 +30,8 @@ This will build a Docker Image for [S3QL](http://www.rath.org/s3ql-docs/)), A vi
   - [Persistent Storage](#persistent-storage)
   - [Environment Variables](#environment-variables)
     - [Base Images used](#base-images-used)
-  - [Networking](#networking)
+    - [Container Options](#container-options)
+    - [S3QL Options](#s3ql-options)
 - [Maintenance](#maintenance)
   - [Shell Access](#shell-access)
 - [Support](#support)
@@ -40,6 +42,8 @@ This will build a Docker Image for [S3QL](http://www.rath.org/s3ql-docs/)), A vi
 - [License](#license)
 - [References](#references)
 
+## Prerequisites and Assumptions
+*  Allow container to have `SYS_ADMIN` capabilities
 
 ## Installation
 ### Build from Source
@@ -68,13 +72,18 @@ Images are built primarily for `amd64` architecture, and may also include builds
 
 * Set various [environment variables](#environment-variables) to understand the capabilities of this image.
 * Map [persistent storage](#data-volumes) for access to configuration and data files for backup.
+* Set `SYS_ADMIN` capabilities
 
 ### Persistent Storage
 
 The following directories are used for configuration and can be mapped for persistent storage.
 
-| Directory | Description |
-| --------- | ----------- |
+| Directory  | Description                             |
+| ---------- | --------------------------------------- |
+| `/cache/`  | (Optional) Cache Files                  |
+| `/data/`   | Mount directory for S3QL Filesysten     |
+| `/config/` | (Optional) Configuration file directory |
+| `/logs/`   | Log files                               |
 
 
 * * *
@@ -90,11 +99,33 @@ Be sure to view the following repositories to understand all the customizable op
 | ------------------------------------------------------ | -------------------------------------- |
 | [OS Base](https://github.com/tiredofit/docker-alpine/) | Customized Image based on Alpine Linux |
 
-### Networking
 
+#### Container Options
+| Variable     | Description          | Default   |
+| ------------ | -------------------- | --------- |
+| `CACHE_PATH` | Cache Directory Path | `/cache/` |
 
-| Port | Protocol | Description |
-| -----| -------- | ----------- |
+| `CONFIG_FILE`             | Configuration File with credentials                                                      | `s3ql.conf` |
+| `CONFIG_PATH`             | Configuration Path                                                                       | `/config/`  |
+| `DATA_PATH`               | Path to mount S3QL File System                                                           | `/data/`    |
+
+| `LOG_PATH`                | Path for Log Files                                                                       | `/logs/`    |
+| `LOG_TYPE`                | `CONSOLE` or `FILE`                                                                      | `FILE`      |
+| `SETUP_MODE`              | Automatically create configuration files on container startup from environment variables | `AUTO`      |
+
+#### S3QL Options
+| Variable                  | Description                                                               | Default  |
+| ------------------------- | ------------------------------------------------------------------------- | -------- |
+| `COMPRESSION`             | Compresion type `none` `bzip` `lzma` `zlib` and compression level `0-9`   | `lzma-6` |
+| `ENABLE_CACHE`            | Enable Cache on File system                                               | `TRUE`   |
+| `ENABLE_PERSISTENT_CACHE` | Enable Cache even after filesystem is not mounted                         | `TRUE`   |
+| `FSCK_ARGS`               | Arguments to pass to fsck process on container start                      | ``       |
+| `MKFS_ARGS`               | Arguments to pass to mkfs process when making filesystem                  | ``       |
+| `S3_KEY_ID`               | S3 Key ID                                                                 | ``       |
+| `S3_KEY_SECRET`           | S3 Key Secret                                                             | ``       |
+| `S3_URI`                  | URI of S3 Bucket eg `s3c://s3.ca-central-1.wasabisys.com:443/bucket_name` | ``       |
+| `S3QL_ARGS`               | Arguments to pass to mount.s3ql process                                   | ``       |
+| `S3QL_PASS`               | (Optional) Encrypted password for S3QL Filesystem                         |          |
 
 ## Maintenance
 ### Shell Access

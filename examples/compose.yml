@@ -1,0 +1,38 @@
+services:
+
+  s3ql-app:
+    image: tiredofit/s3ql:latest
+    container_name: s3ql-app
+    volumes:
+      - ./cache:/cache
+      - ./config:/config
+      - ./logs:/logs
+      - ./data:/data
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    devices:
+        - /dev/fuse:/dev/fuse:rwm
+    environment:
+      - TIMEZONE=America/Vancouver
+      - CONTAINER_NAME=s3ql-app
+
+      - MODE=normal
+
+      - S3_HOST=s3c://s3.ca-central-1.wasabisys.com:443/bucket_name
+      - S3_KEY_ID=supersecretid
+      - S3_KEY_SECRET=supersecretsecret
+      - S3QL_PASS=encryptedpassword
+
+      - ENABLE_CACHE=TRUE
+      - ENABLE_PERSISTENT_CACHE=TRUE
+      - COMPRESSION=none
+
+      - LOG_TYPE=FILE
+    networks:
+      - services
+    restart: always
+
+networks:
+  services:
+    external: true
