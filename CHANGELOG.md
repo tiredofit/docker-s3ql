@@ -1,3 +1,13 @@
+## 1.1.0 2023-01-24 <dave at tiredofit dot ca>
+
+   ### Added
+      - Add `fsck-now` script for file system checking
+      - Add force-dismount script for stuck filesystems that have failed
+
+   ### Changed
+      - Properly write to the LOG_PATH
+
+
 ## 1.0.0 2023-01-20 <dave at tiredofit dot ca>
 
    ### Added

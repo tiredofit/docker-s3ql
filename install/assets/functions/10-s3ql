@@ -33,8 +33,6 @@ bootstrap_filesystem() {
     esac
 }
 
-
-
 setup_s3ql() {
     if [ "${SETUP_MODE,,}" = "auto" ] ; then
         sanity_var S3_HOST "S3 Storage URL"
@@ -66,8 +64,8 @@ EOF
         fi
 
         if [ "${LOG_TYPE,,}" = "file" ] ; then
-            log_fsck=$(date %Y-%m-%d.%H:%M:%S)-fsck_$(echo "${S3_HOST}" | cut -d / -f 3.log)
-            log_mkfs="mkfs-$(echo "${S3_HOST}" | cut -d / -f 3.log)"
+            log_fsck="${LOG_PATH}"/$(date %Y-%m-%d.%H:%M:%S)-fsck_$(echo "${S3_HOST}" | cut -d / -f 3.log)
+            log_mkfs="${LOG_PATH}"/mkfs-$(echo "${S3_HOST}" | cut -d / -f 3.log)
         else
             log_fsck=none
             log_mkfs=none
@@ -79,7 +77,6 @@ EOF
                 --authfile "${CONFIG_PATH}"/"${CONFIG_FILE}" \
                 --compression "${COMPRESSION}"
                 ${s3ql_cachedir_arg} "${S3_HOST}" ${FSCK_ARGS}
-
         fsck_ec=$?
 
         if [ ${fsck_ec} -eq 18 ]; then

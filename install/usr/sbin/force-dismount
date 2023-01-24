@@ -1,0 +1,18 @@
+#!/command/with-contenv bash
+source /assets/functions/00-container
+source /assets/defaults/10-s3ql
+PROCESS_NAME=force-dismount
+
+S3QL_DISCONNECTED_ENDPOINTS=$(df 2>&1 | grep "Transport endpoint is not connected" | awk '{ print $2 }' | tr -d '‘' | tr -d '’:')
+if [[ "${S3QL_DISCONNECTED_ENDPOINTS}" ]]; then
+    for s3qlfs in $S3QL_DISCONNECTED_ENDPOINTS; do
+        print_info "Attempting to unmount '${s3qlfs}'"
+        if fusermount3 -u -z "${s3qlfs}" ; then
+            print_info "Success unmounting ${s3qlfs}"
+            exit 0
+        else
+            print_error "Problem unmounting ${s3qlfs}, consider using: killall -9 mount.s3ql"
+            exit 1
+        fi
+    done
+fi

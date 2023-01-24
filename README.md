@@ -33,6 +33,8 @@ This will build a Docker Image for [S3QL](http://www.rath.org/s3ql-docs/)), A de
     - [Container Options](#container-options)
     - [S3QL Options](#s3ql-options)
 - [Maintenance](#maintenance)
+  - [File System Maintenance](#file-system-maintenance)
+  - [Transport endpoint not connected](#transport-endpoint-not-connected)
   - [Shell Access](#shell-access)
 - [Support](#support)
   - [Usage](#usage)
@@ -85,7 +87,6 @@ The following directories are used for configuration and can be mapped for persi
 | `/config/` | (Optional) Configuration file directory |
 | `/logs/`   | Log files                               |
 
-
 * * *
 ### Environment Variables
 
@@ -101,19 +102,19 @@ Be sure to view the following repositories to understand all the customizable op
 
 
 #### Container Options
+
 | Variable     | Description          | Default   |
 | ------------ | -------------------- | --------- |
 | `CACHE_PATH` | Cache Directory Path | `/cache/` |
-
 | `CONFIG_FILE`             | Configuration File with credentials                                                      | `s3ql.conf` |
 | `CONFIG_PATH`             | Configuration Path                                                                       | `/config/`  |
 | `DATA_PATH`               | Path to mount S3QL File System                                                           | `/data/`    |
-
 | `LOG_PATH`                | Path for Log Files                                                                       | `/logs/`    |
 | `LOG_TYPE`                | `CONSOLE` or `FILE`                                                                      | `FILE`      |
 | `SETUP_MODE`              | Automatically create configuration files on container startup from environment variables | `AUTO`      |
 
 #### S3QL Options
+
 | Variable                  | Description                                                               | Default  |
 | ------------------------- | ------------------------------------------------------------------------- | -------- |
 | `COMPRESSION`             | Compresion type `none` `bzip` `lzma` `zlib` and compression level `0-9`   | `lzma-6` |
@@ -128,6 +129,12 @@ Be sure to view the following repositories to understand all the customizable op
 | `S3QL_PASS`               | (Optional) Encrypted password for S3QL Filesystem                         |          |
 
 ## Maintenance
+### File System Maintenance
+- If you would like to perform file system maintenance, first make sure the file system is dismounted by executing `service_down 10-s3ql` and then execute `fsck-now` . Make sure to mount the filesystem again by executing `service_up 10-s3ql`
+
+### Transport endpoint not connected
+- If at some time you experience the issue of not being able to unmount your filesystem, try entering into the container and executing `force-dismount` which should allow the filesystem to be dismounted.
+
 ### Shell Access
 
 For debugging and maintenance purposes you may want access the containers shell.

@@ -15,7 +15,7 @@ if var_true "${ENABLE_CACHE}" ; then
 fi
 
 if [ "${LOG_TYPE,,}" = "file" ] ; then
-    log_s3ql="s3ql-$(echo "${S3_HOST}" | cut -d / -f 3.log)"
+    log_s3ql="${LOG_PATH}"/s3ql-$(echo "${S3_HOST}" | cut -d / -f 3.log)
 else
     log_s3ql="none"
 fi
