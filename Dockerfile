@@ -37,16 +37,17 @@ RUN source assets/functions/00-container && \
                     && \
     \
     pip3 install \
-                apsw \
+                "apsw>=3.7.0" \
                 cryptography \
                 defusedxml \
-                dugong \
+                "dugong>=3.4,<4.0" \
                 google-auth \
                 google-auth-oauthlib \
                 llfuse \
-                pyfuse3 \
+                "pyfuse3>=3.2.0,<4.0" \
                 pytest \
                 requests \
+                "trio>=0.15" \
                 && \
     \
     clone_git_repo "${S3QL_REPO_URL}" "${S3QL_VERSION}" && \

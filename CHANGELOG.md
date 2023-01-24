@@ -1,3 +1,9 @@
+## 1.2.0 2023-01-24 <dave at tiredofit dot ca>
+
+   ### Added
+      - Pin some python modules to have specific version constraints
+
+
 ## 1.1.0 2023-01-24 <dave at tiredofit dot ca>
 
    ### Added
