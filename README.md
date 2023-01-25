@@ -1,7 +1,7 @@
 # github.com/tiredofit/s3ql
 
 [![GitHub release](https://img.shields.io/github/v/tag/tiredofit/docker-s3ql?style=flat-square)](https://github.com/tiredofit/docker-s3ql/releases/latest)
-[![Build Status](https://img.shields.io/github/workflow/status/tiredofit/docker-s3ql/build?style=flat-square)](https://github.com/tiredofit/docker-s3ql/actions?query=workflow%3Abuild)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/tiredofit/docker-s3ql/main.yml?branch=main&style=flat-square)](https://github.com/tiredofit/docker-s3ql/actions)
 [![Docker Stars](https://img.shields.io/docker/stars/tiredofit/s3ql.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/s3ql/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tiredofit/s3ql.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/s3ql/)
 [![Become a sponsor](https://img.shields.io/badge/sponsor-tiredofit-181717.svg?logo=github&style=flat-square)](https://github.com/sponsors/tiredofit)
