@@ -1,3 +1,12 @@
+## 1.3.0 2023-01-25 <dave at tiredofit dot ca>
+
+   ### Added
+      - Add unmount command on container stop to target any `fuse.s3ql` filesystems
+
+   ### Changed
+      - Change `S3QL_ARGS` to `MOUNT_ARGS`
+
+
 ## 1.2.0 2023-01-24 <dave at tiredofit dot ca>
 
    ### Added

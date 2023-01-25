@@ -103,15 +103,15 @@ Be sure to view the following repositories to understand all the customizable op
 
 #### Container Options
 
-| Variable     | Description          | Default   |
-| ------------ | -------------------- | --------- |
-| `CACHE_PATH` | Cache Directory Path | `/cache/` |
-| `CONFIG_FILE`             | Configuration File with credentials                                                      | `s3ql.conf` |
-| `CONFIG_PATH`             | Configuration Path                                                                       | `/config/`  |
-| `DATA_PATH`               | Path to mount S3QL File System                                                           | `/data/`    |
-| `LOG_PATH`                | Path for Log Files                                                                       | `/logs/`    |
-| `LOG_TYPE`                | `CONSOLE` or `FILE`                                                                      | `FILE`      |
-| `SETUP_MODE`              | Automatically create configuration files on container startup from environment variables | `AUTO`      |
+| Variable      | Description                                                                              | Default     |
+| ------------- | ---------------------------------------------------------------------------------------- | ----------- |
+| `CACHE_PATH`  | Cache Directory Path                                                                     | `/cache/`   |
+| `CONFIG_FILE` | Configuration File with credentials                                                      | `s3ql.conf` |
+| `CONFIG_PATH` | Configuration Path                                                                       | `/config/`  |
+| `DATA_PATH`   | Path to mount S3QL File System                                                           | `/data/`    |
+| `LOG_PATH`    | Path for Log Files                                                                       | `/logs/`    |
+| `LOG_TYPE`    | `CONSOLE` or `FILE`                                                                      | `FILE`      |
+| `SETUP_MODE`  | Automatically create configuration files on container startup from environment variables | `AUTO`      |
 
 #### S3QL Options
 
@@ -122,10 +122,10 @@ Be sure to view the following repositories to understand all the customizable op
 | `ENABLE_PERSISTENT_CACHE` | Enable Cache even after filesystem is not mounted                         | `TRUE`   |
 | `FSCK_ARGS`               | Arguments to pass to fsck process on container start                      | ``       |
 | `MKFS_ARGS`               | Arguments to pass to mkfs process when making filesystem                  | ``       |
+| `MOUNT_ARGS`              | Arguments to pass to mount process when mounting filesystem               | ``       |
 | `S3_KEY_ID`               | S3 Key ID                                                                 | ``       |
 | `S3_KEY_SECRET`           | S3 Key Secret                                                             | ``       |
 | `S3_URI`                  | URI of S3 Bucket eg `s3c://s3.ca-central-1.wasabisys.com:443/bucket_name` | ``       |
-| `S3QL_ARGS`               | Arguments to pass to mount.s3ql process                                   | ``       |
 | `S3QL_PASS`               | (Optional) Encrypted password for S3QL Filesystem                         |          |
 
 ## Maintenance
