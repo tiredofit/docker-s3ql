@@ -1,4 +1,4 @@
-#!/command/with-contenv bash
+#/bin/bash
 source /assets/functions/00-container
 source /assets/defaults/10-s3ql
 PROCESS_NAME=force-dismount

@@ -59,46 +59,49 @@ EOF
         if var_true "${ENABLE_CACHE}" ; then
             s3ql_cachedir_arg="--cachedir ${CACHE_PATH}"
             if var_true "${ENABLE_PERSISTENT_CACHE}" ; then
-                s3ql_cachedir_arg+=" --keep-cache"
+                s3ql_cache_peresistent_arg="--keep-cache"
             fi
         fi
 
         if [ "${LOG_TYPE,,}" = "file" ] ; then
-            log_fsck="${LOG_PATH}"/$(date %Y-%m-%d.%H:%M:%S)-fsck_$(echo "${S3_HOST}" | cut -d / -f 3.log)
-            log_mkfs="${LOG_PATH}"/mkfs-$(echo "${S3_HOST}" | cut -d / -f 3.log)
+            exec_arg=silent
+            log_fsck="${LOG_PATH}"/$(date +'%Y%m%d%H%M%S')-fsck_$(echo "${S3_HOST}" | cut -d / -f 4).log
+            log_mkfs="${LOG_PATH}"/$(date +'%Y%m%d%H%M%S')-mkfs_$(echo "${S3_HOST}" | cut -d / -f 4).log
         else
             log_fsck=none
             log_mkfs=none
         fi
 
         print_debug "Performing File System Check on Initialization"
-        fsck.s3ql \
+        ${exec_arg} fsck.s3ql \
+                --batch \
                 --log ${log_fsck} \
                 --authfile "${CONFIG_PATH}"/"${CONFIG_FILE}" \
-                --compression "${COMPRESSION}"
-                ${s3ql_cachedir_arg} "${S3_HOST}" ${FSCK_ARGS}
+                --compress "${COMPRESSION}" \
+                ${s3ql_cachedir_arg} ${s3ql_cache_persistent_arg} "${S3_HOST}" ${FSCK_ARGS}
         fsck_ec=$?
 
         if [ ${fsck_ec} -eq 18 ]; then
-            if [ -n "$S3QL_PASS" ]; then
+            if [ -n "${S3QL_PASS}" ]; then
                 print_notice "Creating new encrypted S3QL Filesystem on '${S3_HOST}'"
-                echo $S3QL_PASS | mkfs.s3ql \
+                backup_key=backup_$(echo "${S3_HOST}" | cut -d / -f 4).key
+                echo "${S3QL_PASS}" | mkfs.s3ql \
                                             --log "${log_mkfs}" \
                                             --authfile "${CONFIG_PATH}"/"${CONFIG_FILE}" \
-                                            --compression "${COMPRESSION}" \
-                                            ${s3ql_cachedir_arg} ${MKFS_ARGS} "${S3_HOST}"
+                                            ${s3ql_cachedir_arg} ${MKFS_ARGS} "${S3_HOST}" | ${exec_arg} tee "${CONFIG_PATH}"/${backup_key}
+                print_notice "A backup key has been saved to '${CONFIG_PATH}/${backup_key}'. Please keep in a safe location if you ever lose your encryption key!"
             else
                 print_notice "Creating new unencrypted S3QL Filesystem on '${S3_HOST}'"
-                mkfs.s3ql \
+                ${exec_arg} mkfs.s3ql \
                             --log "${log_mkfs}" \
                             --authfile "${CONFIG_PATH}"/"${CONFIG_FILE}" \
-                            --compression "${COMPRESSION}" \
                             --plain \
                             ${s3ql_cachedir_arg} ${MKFS_ARGS} "${S3_HOST}"
             fi
         elif [ "${fsck_ec}" -ne 0 ]; then
             print_error "Detected problems with the file system with exit code '${fsck_ec}'. Halting.."
-            exit $fsck_ec
+            print_error "Head inside the container and perform any commands before restarting the container again.."
+            exit "${fsck_ec}"
         fi
     else
         print_notice "S3QL Manual Mode Activated"

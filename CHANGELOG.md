@@ -1,3 +1,15 @@
+## 1.4.0 2023-01-25 <dave at tiredofit dot ca>
+
+   ### Added
+      - Add CACHE_SIZE environment variable
+      - Make log file names more consistent
+      - Create recovery key backup in CONFIG_PATH on filesystem creation
+      - Force dismounts on container shutdown
+
+   ### Changed
+      - Lots of bug fixes, annoyances, and quirks
+
+
 ## 1.3.0 2023-01-25 <dave at tiredofit dot ca>
 
    ### Added

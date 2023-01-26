@@ -7,7 +7,7 @@ services:
       - ./cache:/cache
       - ./config:/config
       - ./logs:/logs
-      - ./data:/data
+      - ./data:/data:shared
     privileged: true
     cap_add:
       - SYS_ADMIN
@@ -32,6 +32,7 @@ services:
     networks:
       - services
     restart: always
+    stop_grace_period: 10m
 
 networks:
   services:

@@ -115,18 +115,19 @@ Be sure to view the following repositories to understand all the customizable op
 
 #### S3QL Options
 
-| Variable                  | Description                                                               | Default  |
-| ------------------------- | ------------------------------------------------------------------------- | -------- |
-| `COMPRESSION`             | Compresion type `none` `bzip` `lzma` `zlib` and compression level `0-9`   | `lzma-6` |
-| `ENABLE_CACHE`            | Enable Cache on File system                                               | `TRUE`   |
-| `ENABLE_PERSISTENT_CACHE` | Enable Cache even after filesystem is not mounted                         | `TRUE`   |
-| `FSCK_ARGS`               | Arguments to pass to fsck process on container start                      | ``       |
-| `MKFS_ARGS`               | Arguments to pass to mkfs process when making filesystem                  | ``       |
-| `MOUNT_ARGS`              | Arguments to pass to mount process when mounting filesystem               | ``       |
-| `S3_KEY_ID`               | S3 Key ID                                                                 | ``       |
-| `S3_KEY_SECRET`           | S3 Key Secret                                                             | ``       |
-| `S3_URI`                  | URI of S3 Bucket eg `s3c://s3.ca-central-1.wasabisys.com:443/bucket_name` | ``       |
-| `S3QL_PASS`               | (Optional) Encrypted password for S3QL Filesystem                         |          |
+| Variable                  | Description                                                               | Default   |
+| ------------------------- | ------------------------------------------------------------------------- | --------- |
+| `CACHE_SIZE`              | Cache size in KiB - eg `9765625` for 10GB or `auto`                       | `auto` |
+| `COMPRESSION`             | Compresion type `none` `bzip` `lzma` `zlib` and compression level `0-9`   | `lzma-6`  |
+| `ENABLE_CACHE`            | Enable Cache on File system                                               | `TRUE`    |
+| `ENABLE_PERSISTENT_CACHE` | Enable Cache even after filesystem is not mounted                         | `TRUE`    |
+| `FSCK_ARGS`               | Arguments to pass to fsck process on container start                      | ``        |
+| `MKFS_ARGS`               | Arguments to pass to mkfs process when making filesystem                  | ``        |
+| `MOUNT_ARGS`              | Arguments to pass to mount process when mounting filesystem               | ``        |
+| `S3_KEY_ID`               | S3 Key ID                                                                 | ``        |
+| `S3_KEY_SECRET`           | S3 Key Secret                                                             | ``        |
+| `S3_URI`                  | URI of S3 Bucket eg `s3c://s3.ca-central-1.wasabisys.com:443/bucket_name` | ``        |
+| `S3QL_PASS`               | (Optional) Encrypted password for S3QL Filesystem                         |           |
 
 ## Maintenance
 ### File System Maintenance
