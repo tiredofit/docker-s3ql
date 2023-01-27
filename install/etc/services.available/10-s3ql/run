@@ -34,5 +34,5 @@ ${exec_arg} exec /usr/bin/mount.s3ql \
                             --compress "${COMPRESSION}" \
                             --fg \
                             --log "${log_s3ql}" \
-                            ${s3ql_cachedir_arg} ${s3ql_cache_persistent_arg} ${s3ql_cache_size} ${S3QL_ARGS} "${S3_HOST}" \
+                            ${s3ql_cachedir_arg} ${s3ql_cache_persistent_arg} ${s3ql_cache_size} ${MOUNT_ARGS} "${S3_HOST}" \
                             "${DATA_PATH}"
