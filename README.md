@@ -60,7 +60,7 @@ docker pull docker.io/tiredofdit/s3ql:(imagetag)
 Builds of the image are also available on the [Github Container Registry](https://github.com/tiredofit/docker-s3ql/pkgs/container/docker-s3ql) 
  
 ```
-docker pull ghcr.io/tiredofit/docker-s3ql/pkgs/container/docker-s3ql):(imagetag)
+docker pull ghcr.io/tiredofit/docker-s3ql:(imagetag)
 ``` 
 
 The following image tags are available along with their tagged release based on what's written in the [Changelog](CHANGELOG.md):
