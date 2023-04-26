@@ -25,6 +25,10 @@ else
     log_s3ql="none"
 fi
 
+transform_file_var \
+                    MOUNT_ARGS \
+                    S3_HOST
+
 liftoff
 
 print_start "Starting S3QL ${S3QL_VERSION} for host: '${S3_HOST}'"

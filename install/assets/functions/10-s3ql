@@ -35,6 +35,16 @@ bootstrap_filesystem() {
 
 setup_s3ql() {
     if [ "${SETUP_MODE,,}" = "auto" ] ; then
+        transform_file_var \
+                    FSCK_ARGS \
+                    MKFS_ARGS \
+                    MOUNT_ARGS \
+                    S3QL_PASS \
+                    S3_HOST \
+                    S3_KEY_ID \
+                    S3_KEY_SECRET \
+                    S3_URI
+
         sanity_var S3_HOST "S3 Storage URL"
         sanity_var S3_KEY_ID "S3 Key ID"
         sanity_var S3_KEY_SECRET "S3 Key Secret"
