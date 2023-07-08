@@ -1,4 +1,4 @@
-## 1.6.1 2023-07-05 <dave at tiredofit dot ca>
+## 1.5.2 2023-07-05 <dave at tiredofit dot ca>
 
    ### Added
       - S3QL 4.0.1
