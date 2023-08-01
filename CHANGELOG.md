@@ -1,3 +1,9 @@
+## 1.6.3 2023-08-01 <dave at tiredofit dot ca>
+
+   ### Added
+      - S3QL 5.1.0
+
+
 ## 1.6.2 2023-07-08 <dave at tiredofit dot ca>
 
 There are breaking changes in the filesystem and your filesystems need to be upgraded to the latest nonreversible version. See https://github.com/s3ql/s3ql/releases/tag/s3ql-5.0.0
