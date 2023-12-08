@@ -1,3 +1,9 @@
+## 1.6.9 2023-12-08 <dave at tiredofit dot ca>
+
+   ### Added
+      - Add s3ql-upgrade script
+
+
 ## 1.6.8 2023-12-08 <dave at tiredofit dot ca>
 
    ### Added
