@@ -1,3 +1,9 @@
+## 1.6.10 2023-12-08 <dave at tiredofit dot ca>
+
+   ### Changed
+      - Fix log for upgrades
+
+
 ## 1.6.9 2023-12-08 <dave at tiredofit dot ca>
 
    ### Added
