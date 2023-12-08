@@ -1,3 +1,9 @@
+## 1.6.12 2023-12-08 <dave at tiredofit dot ca>
+
+   ### Changed
+      - Remove fsck args
+
+
 ## 1.6.11 2023-12-08 <dave at tiredofit dot ca>
 
    ### Changed
