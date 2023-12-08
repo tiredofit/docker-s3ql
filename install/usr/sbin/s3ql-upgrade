@@ -15,7 +15,7 @@ fi
 
 print_notice "Performing S3QL Filesystem check on '${S3_HOST}'"
 
-s3qladm upgrade \
+s3qladm \
         --log ${log_upgrade} \
         --authfile "${CONFIG_PATH}"/"${CONFIG_FILE}" \
         ${s3ql_cachedir_arg} upgrade "${S3_HOST}"

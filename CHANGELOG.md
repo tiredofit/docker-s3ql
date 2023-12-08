@@ -1,3 +1,9 @@
+## 1.6.14 2023-12-08 <dave at tiredofit dot ca>
+
+   ### Changed
+      - Fix duplicate upgrade prompt
+
+
 ## 1.6.13 2023-12-08 <dave at tiredofit dot ca>
 
    ### Changed
