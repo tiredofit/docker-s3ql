@@ -37,7 +37,7 @@ RUN source assets/functions/00-container && \
 		    py3-packaging \
                     && \
     \
-    pip3 install \
+    pip3 install --break-system-packages \
                 "apsw>=3.7.0" \
                 cryptography \
                 defusedxml \
