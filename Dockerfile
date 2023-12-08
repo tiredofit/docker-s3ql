@@ -34,6 +34,7 @@ RUN source assets/functions/00-container && \
     package install .s3ql-run-deps \
                     fuse3 \
                     python3 \
+		    py3-packaging \
                     && \
     \
     pip3 install \

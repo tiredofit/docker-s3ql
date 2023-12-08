@@ -1,3 +1,9 @@
+## 1.6.8 2023-12-08 <dave at tiredofit dot ca>
+
+   ### Added
+      - Add py3-packaging module
+
+
 ## 1.6.7 2023-12-08 <dave at tiredofit dot ca>
 
    ### Added
