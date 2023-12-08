@@ -19,5 +19,4 @@ print_notice "Performing S3QL Filesystem check on '${S3_HOST}'"
 s3qladm upgrade \
         --log ${log_upgrade} \
         --authfile "${CONFIG_PATH}"/"${CONFIG_FILE}" \
-        --compress "${COMPRESSION}" \
         ${s3ql_cachedir_arg} "${S3_HOST}" ${FSCK_ARGS} ${fsck_cli_args}
