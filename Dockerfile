@@ -1,12 +1,12 @@
 ARG DISTRO=alpine
-ARG DISTRO_VARIANT=3.19
+ARG DISTRO_VARIANT=3.20
 
 FROM docker.io/tiredofit/${DISTRO}:${DISTRO_VARIANT}
 LABEL maintainer="Dave Conroy (github.com/tiredofit)"
 
 ARG S3QL_VERSION
 
-ENV S3QL_VERSION=s3ql-5.2.0 \
+ENV S3QL_VERSION=s3ql-5.2.1 \
     S3QL_REPO_URL=https://github.com/s3ql/s3ql \
     IMAGE_NAME="tiredofit/s3ql" \
     IMAGE_REPO_URL="https://github.com/tiredofit/s3ql/"

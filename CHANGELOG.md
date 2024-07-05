@@ -1,3 +1,10 @@
+## 1.6.16 2024-07-05 <dave at tiredofit dot ca>
+
+   ### Added
+      - Alpine 3.20 base
+      - S3QL 5.2.1
+
+
 ## 1.6.15 2024-04-19 <dave at tiredofit dot ca>
 
    ### Added
