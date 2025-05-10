@@ -1,3 +1,9 @@
+## 1.6.21 2025-05-10 <dave at tiredofit dot ca>
+
+   ### Added
+      - Switch to Alpine Edge for Go 1.24 buildchain
+
+
 ## 1.6.20 2025-05-10 <dave at tiredofit dot ca>
 
    ### Added
